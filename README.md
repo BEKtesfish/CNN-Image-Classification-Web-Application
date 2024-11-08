@@ -31,8 +31,8 @@ To get a local copy of the project running, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/abdallahalidev/cnn_image_classification_web_app.git
-    cd cnn_image_classification_web_app
+    git clone https://github.com/BEKtesfish/CNN-Image-Classification-Web-Application.git
+    CNN-Image-Classification-Web-Application
     ```
 
 2. **Create and Activate a Virtual Environment**:
@@ -51,18 +51,27 @@ To get a local copy of the project running, follow these steps:
 #### 1. **Setup TensorFlow Serving**:
    To serve the model with TensorFlow Serving, use Docker:
    ```bash
-   docker run -p 8501:8501 \
-       --name=tf_serving_container \
-       --mount type=bind,source=/path/to/your/model,target=/models/my_model \
-       -e MODEL_NAME=my_model \
-       tensorflow/serving
+    docker run -t --rm -p 8501:8501 -v C:<your repository>\potato_classifier\models:/models tensorflow/serving --rest_api_port=8501 --model_config_file=/potato_classifier/models.config
+    ```
+    For more details, see the [TensorFlow Serving Documentation](https://www.tensorflow.org/tfx/serving/docker).
 
-#### 2. cd api
-    * python main-tf-serving.py
-#### cd ../front
-    * npm install
-    * npm start
-#### Access the Application: Open your browser and go to http://localhost:3000. 
+#### 2. **Run the FastAPI Backend**:
+    Inside the api directory, start the backend server:
+    ```bash
+    cd api
+    python main-tf-serving.py
+    ```
+
+#### 3. **Run the Frontend**:
+    Navigate to the frontend directory, install dependencies, and start the React app:
+    ```bash
+    cd ../front
+    npm install
+    npm start
+    ```
+
+
+#### 4. **Access the Application**: Open your browser and go to http://localhost:3000. 
     Here, you’ll find a drag-and-drop section where you can upload an image of a 
     potato leaf to receive predictions and a confidence score
 
