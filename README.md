@@ -48,21 +48,21 @@ To get a local copy of the project running, follow these steps:
 
 ### Running the Application
 
-#### 1. **Setup TensorFlow Serving**:
+1. **Setup TensorFlow Serving**:
    To serve the model with TensorFlow Serving, use Docker:
    ```bash
     docker run -t --rm -p 8501:8501 -v C:<your repository>\potato_classifier\models:/models tensorflow/serving --rest_api_port=8501 --model_config_file=/potato_classifier/models.config
     ```
     For more details, see the [TensorFlow Serving Documentation](https://www.tensorflow.org/tfx/serving/docker).
 
-#### 2. **Run the FastAPI Backend**:
+2. **Run the FastAPI Backend**:
     Inside the api directory, start the backend server:
     ```bash
     cd api
     python main-tf-serving.py
     ```
 
-#### 3. **Run the Frontend**:
+3. **Run the Frontend**:
     Navigate to the frontend directory, install dependencies, and start the React app:
     ```bash
     cd ../front
@@ -70,11 +70,10 @@ To get a local copy of the project running, follow these steps:
     npm start
     ```
 
-
-#### 4. **Access the Application**: Open your browser and go to http://localhost:3000. 
+4. **Access the Application**: Open your browser and go to http://localhost:3000. 
     Here, you’ll find a drag-and-drop section where you can upload an image of a 
     potato leaf to receive predictions and a confidence score
 
-Additional Resources
+### Additional Resources
 Model Training Notebook: In the training folder,contains the Jupyter notebook used for training the CNN model. and
- the 1st version of the trained model can be found in the models folder 
+the 1st version of the trained model can be found in the models folder 
