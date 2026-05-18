@@ -19,7 +19,7 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
-endpoint = "http://localhost:8501/v1/models/potatoes_model:predict"
+endpoint = "http://localhost:8501/v1/models/potato_classifier:predict"
 
 CLASS_NAMES = ['Early blight', 'Late blight', 'Healthy']
 
@@ -43,6 +43,8 @@ async def predict(
 		"instances": image_batch.tolist()
 	}
 	response = requests.post(endpoint, json = json_data)
+	print("this is reposne")
+	print(response.json())
 	prediction = np.array(response.json()['predictions'][0])
 	prediction_index = np.argmax(prediction)
 	confidence = np.max(prediction)
